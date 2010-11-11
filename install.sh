@@ -129,6 +129,9 @@ rake db:create
 rake db:migrate
 rake ultrasphinx:bootstrap
 
-crontab -e
-* * * * * cd /var/www/gitorious && /usr/bin/rake ultrasphinx:index RAILS_ENV=production
+#crontab -e
+#* * * * * cd /var/www/gitorious && /usr/bin/rake ultrasphinx:index RAILS_ENV=production
+
+# 使用附帶的 ruby script 建立一個 Gitorious 網站管理者
+env RAILS_ENV=production ruby1.8 script/create_admin
 GIT

@@ -1,0 +1,3 @@
+[ Gitorious 安裝記錄文件 ]
+本文件將安裝 Ruby, RubyGems, Git, Apache2, MySQL 等諸多套件，請視需求修改或參考本文件。
+本文件需以 root 身份執行。

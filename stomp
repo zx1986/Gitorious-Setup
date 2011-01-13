@@ -1,0 +1,39 @@
+#!/bin/sh
+# Start/stop the stompserver    
+#    
+### BEGIN INIT INFO    
+# Provides:          stomp    
+# Required-Start:    $local_fs $remote_fs $network $syslog     
+# Required-Stop:          
+# Default-Start:     2 3 4 5    
+# Default-Stop:      1    
+# Short-Description: Stomp    
+# Description:       Stomp    
+### END INIT INFO    
+
+test -f /usr/bin/stompserver || exit 0    
+
+. /lib/lsb/init-functions    
+
+case "$1" in    
+start)  log_daemon_msg "Starting stompserver" "stompserver"    
+    start-stop-daemon --start --name stompserver --startas /usr/bin/stompserver --background --user git    
+    log_end_msg $?    
+    ;;    
+stop)  log_daemon_msg "Stopping stompserver" "stompserver"    
+    start-stop-daemon --stop --name stompserver    
+    log_end_msg $?    
+    ;;    
+restart) log_daemon_msg "Restarting stompserver" "stompserver"    
+    start-stop-daemon --stop --retry 5 --name stompserver    
+    start-stop-daemon --start --name stompserver --startas /usr/bin/stompserver --background --user git    
+    log_end_msg $?    
+    ;;    
+status)    
+    status_of_proc /usr/bin/stompserver stompserver && exit 0 || exit $?    
+    ;;    
+*)      log_action_msg "Usage: /etc/init.d/stomp {start|stop|restart|status}"    
+    exit 2    
+    ;;    
+esac    
+exit 0

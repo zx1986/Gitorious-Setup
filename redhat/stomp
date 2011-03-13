@@ -1,0 +1,11 @@
+#!/bin/sh
+#  
+# stomp        Startup script for stomp server   
+#  
+# chkconfig: - 85 15  
+# description: Stomp server is simple task queue server that \  
+#              uses stomp protocol.       
+# processname: stomp  
+# config: /etc/stompserver.conf
+
+/bin/su - git -c "cd /var/www/html/gitorious; RAILS_ENV=production; stompserver -C /etc/stompserver.conf $@" 

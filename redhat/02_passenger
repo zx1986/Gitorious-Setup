@@ -1,0 +1,6 @@
+#!/bin/bash
+cd `gem environment gempath | cut -d: -f2` ;
+cd gems/passenger*/bin && ./passenger-install-apache2-module
+
+# 將 passenger 的設定值復制到 /etc/httpd/conf.d/passenger.conf
+# copy the passenger module configuration to /etc/httpd/conf.d/passenger.conf

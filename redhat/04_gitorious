@@ -1,0 +1,36 @@
+#!/bin/bash
+
+adduser --create-home git
+
+echo "export RUBY_HOME=/usr/local" >> /home/git/.bashrc
+echo "export GEM_HOME=$RUBY_HOME/lib/ruby/gems/1.8/gems" >> /home/git/.bashrc
+echo "export PATH=$RUBY_HOME/bin:$PATH" >> /home/git/.bashrc
+source /home/git/.bashrc
+
+mkdir -p /home/git/.ssh
+chmod 700 /home/git/.ssh
+touch /home/git/.ssh/authorized_keys
+chmod 600 /home/git/.ssh/authorized_keys
+chown -R git.git /home/git
+
+cd /var/www/html
+git clone git://gitorious.org/gitorious/mainline.git gitorious
+chown -R git.git gitorious
+
+cd gitorious 
+chmod ug+x script/*
+
+mkdir -p git/repositories git/tarballs-work git/tarballs-cache
+
+rake gems:install
+rake db:create RAILS_ENV=production
+rake db:migrate RAILS_ENV=production
+rake ultrasphinx:configure RAILS_ENV=production
+rake ultrasphinx:index RAILS_ENV=production
+rake ultrasphinx:daemon:start RAILS_ENV=production 
+
+echo "* * * * * cd /var/www/html/gitorious && rake ultrasphinx:index RAILS_ENV=production" > /var/spool/cron/git
+chown git.root /var/spool/cron/git
+chmod 600 /var/spool/cron/git
+
+updatedb

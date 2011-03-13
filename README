@@ -1,3 +1,8 @@
 [ Gitorious 安裝記錄文件 ]
+
 本文件將安裝 Ruby, RubyGems, Git, Apache2, MySQL 等諸多套件，請視需求修改或參考本文件。
-本文件需以 root 身份執行。
+分別記錄在 Red Hat（RHEL 5.x）與 Ubuntu（Desktop 10.10） 環境安裝 Gitorious 網站。
+some notes about how to setup Gitorious in RHEL 5.x and Ubuntu.
+
+請根據你的實際環境修改設定的配置、參數！
+please modify the configuration to conform with your enviroment! 

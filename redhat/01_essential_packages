@@ -1,0 +1,52 @@
+#!/bin/bash
+
+#
+yum -y groupinstall "Development Libraries" "Development Tools"
+
+# 基礎套件
+yum install zlib zlib-devel gcc gcc-c++ curl curl-devel expat expat-devel gettext gett ext-devel libssh2 libssh2-devel openssh openssh-server openssl-devel memcached libyaml libyaml-devel ImageMagick ImageMagick-devel apr-devel uuid java-1.6.0-openjdk readline readline-devel glibc-devel sphinx git git-svn pcre pcre-devel sendmail perl-Net-SSLeay perl-IO-Socket-SSL  
+
+# 服務套件
+yum install httpd httpd-devel mysql mysql-server mysql-devel
+
+# Ruby 套件
+yum install ruby ruby-devel ruby-irb ruby-rdoc
+
+#
+cd /opt
+wget https://tn123.org/mod_xsendfile/mod_xsendfile.c && apxs -cia mod_xsendfile.c
+wget http://www.imagemagick.org/download/linux/CentOS/i386/ImageMagick-6.6.8-4.i386.rpm && rpm -ihv --force --nodeps ImageMagick-6.6.8-4.i386.rpm
+
+# 更新 Ruby
+cd /opt
+wget ftp://ftp.ruby-lang.org//pub/ruby/ruby-1.9-stable.tar.gz
+tar zxvf ruby*.tar.gz && cd ruby-1.9*
+./configure --enable-shared --enable-pthread && make && make install
+
+source /etc/profile
+source $HOME/.bash_profile
+ldconfig
+
+cd ext/zlib
+ruby extconf.rb --with-zlib-include=/usr/include --with-zlib-lib=/usr/lib
+cd ../../
+make && make install
+
+source /etc/profile
+source $HOME/.bash_profile
+ldconfig
+
+# 更新 RubyGems
+cd /opt
+wget http://production.cf.rubygems.org/rubygems/rubygems-1.6.2.tgz
+tar zxvf rubygems*.tgz && cd rubygems* && ruby setup.rb
+
+source /etc/profile
+source $HOME/.bash_profile
+ldconfig
+updatedb
+
+# 安裝 Gems
+gem install abstract  actionmailer  actionpack  activemodel  activerecord  activeresource  activesupport  allison  arel  builder  builder  bundler cgi_multipart_eof_fix  chronic  daemon_controller  daemons  diff-lcs  echoe  erubis  eventmachine fastthread  file-tail  gemcutter  gem_plugin  geoip  hoe  i18n  json  json_pure  mail mime-types mongrel  passenger  polyglot  rack rack-mount rack-test  rails  railties  rake  rdiscount  rmagick rubyforge  ruby-hmac  ruby-openid  ruby-yadis  spruz  stomp  stompserver  thin  thor treetop  tzinfo
+
+gem install rack --version=1.0.1

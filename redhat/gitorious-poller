@@ -1,0 +1,10 @@
+#!/bin/sh
+#  
+# poller       Startup script for Gitorious's poller  
+#  
+# chkconfig: - 86 15  
+# description: Gitorious's poller script is simple worker that polls \  
+#              tasks from stomp server queue and executes them.  
+# processname: poller
+
+/bin/su - git -c "cd /var/www/html/gitorious; RAILS_ENV=production ./script/poller $@"

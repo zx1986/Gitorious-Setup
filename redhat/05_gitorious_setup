@@ -31,4 +31,6 @@ service gitorious-poller start
 service git-daemon start
 service httpd restart
 
+echo "127.0.0.1 gitorious" >> /etc/hosts
+
 updatedb

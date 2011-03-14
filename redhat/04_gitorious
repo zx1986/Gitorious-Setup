@@ -28,9 +28,9 @@ cp git-ultrasphinx /etc/init.d/
 cp git-daemon /etc/init.d/
 cp stomp /etc/init.d/
 
-cp broker.yml /var/www/html/gitorious/conf/
-cp database.yml /var/www/html/gitorious/conf/
-cp gitorious.yml /var/www/html/gitorious/conf/
+cp broker.yml /var/www/html/gitorious/config/
+cp database.yml /var/www/html/gitorious/config/
+cp gitorious.yml /var/www/html/gitorious/config/
 
 chown -R git.git /var/www/html/gitorious
 
@@ -46,12 +46,11 @@ chkconfig gitorious-poller on
 chkconfig git-ultrasphinx on
 chkconfig memcached on
 
-service git-ultrasphinx start
-service stomp start
 service memcached start
+service stomp start
+service git-ultrasphinx start
 service gitorious-poller start
 service git-daemon start
-service httpd restart
 
 echo "127.0.0.1 gitorious" >> /etc/hosts
 

@@ -3,8 +3,8 @@
 adduser --create-home git
 
 echo "export RUBY_HOME=/usr/local" >> /home/git/.bashrc
-echo "export GEM_HOME=$RUBY_HOME/lib/ruby/gems/1.8/gems" >> /home/git/.bashrc
-echo "export PATH=$RUBY_HOME/bin:$PATH" >> /home/git/.bashrc
+echo "export GEM_HOME=\$RUBY_HOME/lib/ruby/gems/1.8/gems" >> /home/git/.bashrc
+echo "export PATH=\$RUBY_HOME/bin:\$PATH" >> /home/git/.bashrc
 source /home/git/.bashrc
 
 mkdir -p /home/git/.ssh

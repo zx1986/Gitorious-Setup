@@ -10,7 +10,7 @@ yum install zlib zlib-devel gcc gcc-c++ curl curl-devel expat expat-devel gettex
 yum install httpd httpd-devel mysql mysql-server mysql-devel
 
 # Ruby 套件
-yum install ruby ruby-devel ruby-irb ruby-rdoc
+yum install ruby ruby-devel ruby-irb ruby-rdoc rubygems
 
 #
 cd /opt

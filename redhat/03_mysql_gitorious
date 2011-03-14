@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MY_BATCH="create database gitorious; grant all privileges on git.* to git@localhost identified by 'git';" 
+MY_BATCH="create database gitorious; grant all privileges on gitorious.* to git@localhost identified by 'git';" 
 
 echo "Excuting this command in your MySQL shell:";
 echo $MY_BATCH;

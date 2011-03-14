@@ -14,7 +14,8 @@ yum install ruby ruby-devel ruby-irb ruby-rdoc
 
 #
 cd /opt
-wget https://tn123.org/mod_xsendfile/mod_xsendfile.c && apxs -cia mod_xsendfile.c
+#wget https://tn123.org/mod_xsendfile/mod_xsendfile.c && apxs -cia mod_xsendfile.c
+yum install mod_xsendfile
 wget http://www.imagemagick.org/download/linux/CentOS/i386/ImageMagick-6.6.8-4.i386.rpm && rpm -ihv --force --nodeps ImageMagick-6.6.8-4.i386.rpm
 
 # 更新 Ruby
@@ -47,6 +48,67 @@ ldconfig
 updatedb
 
 # 安裝 Gems
-gem install abstract  actionmailer  actionpack  activemodel  activerecord  activeresource  activesupport  allison  arel  builder  builder  bundler cgi_multipart_eof_fix  chronic  daemon_controller  daemons  diff-lcs  echoe  erubis  eventmachine fastthread  file-tail  gemcutter  gem_plugin  geoip  hoe  i18n  json  json_pure  mail mime-types mongrel  passenger  polyglot  rack rack-mount rack-test  rails  railties  rake  rdiscount  rmagick rubyforge  ruby-hmac  ruby-openid  ruby-yadis  spruz  stomp  stompserver  thin  thor treetop  tzinfo
 
-gem install rack --version=1.0.1
+#gem install abstract  actionmailer  actionpack  activemodel  activerecord  activeresource  activesupport  allison  arel  builder  builder  bundler cgi_multipart_eof_fix  chronic  daemon_controller  daemons  diff-lcs  echoe  erubis  eventmachine fastthread  file-tail  gemcutter  gem_plugin  geoip  hoe  i18n  json  json_pure  mail mime-types mongrel  passenger  polyglot  rack rack-mount rack-test  rails  railties  rake  rdiscount  rmagick rubyforge  ruby-hmac  ruby-openid  ruby-yadis  spruz  stomp  stompserver  thin  thor treetop  tzinfo
+
+#gem install rack --version=1.0.1
+
+echo <<EOF
+please install these gems (** be ware of the version! **):
+
+abstract-1.0.0.gem
+actionmailer-2.3.6.gem
+actionpack-2.3.6.gem
+actionpack-3.0.1.gem
+activemodel-3.0.1.gem
+activerecord-2.3.6.gem
+activerecord-3.0.1.gem
+activeresource-2.3.6.gem
+activesupport-2.3.6.gem
+activesupport-3.0.1.gem
+allison-2.0.3.gem
+arel-1.0.1.gem
+builder-2.1.2.gem
+bundler-1.0.3.gem
+cgi_multipart_eof_fix-2.5.0.gem
+chronic-0.3.0.gem
+daemon_controller-0.2.5.gem
+daemons-1.1.0.gem
+diff-lcs-1.1.2.gem
+echoe-4.3.1.gem
+erubis-2.6.6.gem
+eventmachine-0.12.10.gem
+fastthread-1.0.7.gem
+file-tail-1.0.5.gem
+gemcutter-0.6.1.gem
+gem_plugin-0.2.3.gem
+geoip-0.8.7.gem
+hoe-2.6.2.gem
+i18n-0.5.0.gem
+json-1.4.6.gem
+json_pure-1.4.6.gem
+mail-2.2.9.gem
+mime-types-1.16.gem
+mongrel-1.1.5.gem
+passenger-3.0.0.gem
+polyglot-0.3.1.gem
+rack-1.0.1.gem
+rack-mount-0.6.13.gem
+rack-test-0.5.6.gem
+rails-2.3.6.gem
+railties-3.0.1.gem
+rake-0.8.7.gem
+rdiscount-1.3.1.1.gem
+rmagick-2.13.1.gem
+rubyforge-2.0.4.gem
+ruby-hmac-0.4.0.gem
+ruby-openid-2.1.8.gem
+ruby-yadis-0.3.4.gem
+spruz-0.2.1.gem
+stomp-1.1.gem
+stompserver-0.9.9.gem
+thin-1.2.7.gem
+thor-0.14.4.gem
+treetop-1.4.8.gem
+tzinfo-0.3.23.gem
+EOF

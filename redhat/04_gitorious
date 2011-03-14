@@ -17,11 +17,11 @@ cd /var/www/html
 git clone git://gitorious.org/gitorious/mainline.git gitorious
 chown -R git.git gitorious
 
-cd gitorious 
-chmod ug+x script/*
+chmod ug+x gitorious/script/*
 
 mkdir -p git/repositories git/tarballs-work git/tarballs-cache
 
+cd -
 cp gitorious.conf /etc/httpd/conf.d/gitorious.conf
 cp gitorious-poller /etc/init.d/
 cp git-ultrasphinx /etc/init.d/
@@ -55,6 +55,7 @@ service httpd restart
 
 echo "127.0.0.1 gitorious" >> /etc/hosts
 
+cd /var/www/html/gitorious
 rake gems:install
 rake db:create RAILS_ENV=production
 rake db:migrate RAILS_ENV=production
